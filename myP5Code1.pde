@@ -1,5 +1,5 @@
 setup = function() {
-    size(600, 400);
+    size(800, 600);
 };
 
 //Background Images
@@ -28,7 +28,7 @@ var aloneImage = loadImage("https://images.purexbox.com/df058b0ddb771/fatal-fram
 
 var exploreImage = loadImage("https://gamingbolt.com/wp-content/uploads/2021/10/Fatal-Frame-Maiden-of-Black-Water.jpg");
 
-var congratsImage = loadImage("https://static.xtralife.com/conversions/KXC7-Y009413740-medium_w640_h480-fatal-frame-mask-of-the-lunar-eclipse-official-announcement-trailer-nintendo-direct-2022-1663169938.png");
+var congratsImage = loadImage("https://i.imgur.com/hnKtXYL.jpg");
 
 var sadImage = loadImage("https://gameinformer.com/sites/default/files/styles/full/public/2021/08/05/e4287a3c/fatal-frame-maiden-of-black-water.jpg.webp");
 
@@ -102,26 +102,35 @@ draw = function(){
     } 
     if(key == '3'){
       sceneImage = congratsImage;
-      sceneText = " Congradulations! you escaped! [Press b to restart...]";
+      sceneText = " Congratulations! you escaped! Click to make the butterfly guide her.. [Press b to restart...]";
+     
+      
     } 
 if(key == '4'){
       sceneImage = sadImage;
-      sceneText = " you get sent to the forest and lost forever \n ... [Press b to restart...]";
+      sceneText = " you get sent to the forest and lost forever ... it wants to tell you something..click. \n [Press b to restart...]";
     } 
    }
-  
+ if(mousePressed && sceneImage == congratsImage) 
+ {
+  textSize(30);
+      text("🦋", mouseX, mouseY);
+ }
+ if(mousePressed && sceneImage == sadImage) {
+  text("You can't escape.", random (0,800) , random (0,600));
+ }
 };
 
 var drawScene = function(){
-    image(sceneImage, 0, 0, 600, 400);
+    image(sceneImage, 0, 0, 800, 600);
     
     fill(0,0,0);
-    rect(0, 350, 600, 100);
+    rect(0, 500, 800, 300);
       
     fill(255,255,255);
     textSize(20);
    
-    text(sceneText, 10, 375);
+    text(sceneText, 10, 550);
 };
 
 
